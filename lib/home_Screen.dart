@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tests/controller.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   List textx = ['All', 'Gaming Stuff', 'Camera Stuff', 'Pc Stuff'];
   List<IconData> icons = [Icons.home, Icons.shop, Icons.manage_accounts];
