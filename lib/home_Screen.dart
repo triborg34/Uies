@@ -4,9 +4,46 @@ import 'package:tests/controller.dart';
 
 class HomeScreen extends StatelessWidget {
   List textx = ['All', 'Gaming Stuff', 'Camera Stuff', 'Pc Stuff'];
+  List<IconData> icons = [Icons.home, Icons.shop, Icons.manage_accounts];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 85, vertical: 10),
+        height: 70,
+        decoration: BoxDecoration(
+            color: Color.fromRGBO(104, 126, 255, 1.0),
+            borderRadius: BorderRadius.circular(25)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            for (int i = 0; i < icons.length; i++)
+              Obx(
+                () => GestureDetector(
+                  onTap: () {
+                    Get.find<Controllers>().bottomindex.value = i;
+                  },
+                  child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Get.find<Controllers>().bottomindex.value == i
+                              ? Colors.white
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Icon(
+                        icons[i],
+                        size: 30,
+                        color: Get.find<Controllers>().bottomindex.value == i
+                            ? Colors.orange
+                            : Colors.white,
+                      )),
+                ),
+              )
+          ],
+        ),
+      ),
       backgroundColor: Color.fromRGBO(15, 16, 20, 1.0),
       body: Container(
           child: Column(
@@ -107,7 +144,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
             child: Column(children: [
               Container(
-                height: 40,
+                height: 50,
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => Obx(
@@ -141,6 +178,16 @@ class HomeScreen extends StatelessWidget {
                           width: 10,
                         ),
                     itemCount: textx.length),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  bottomShow(
+                      'assets/images/00.png', '360 VR Camera', '\$218.99'),
+                  bottomShow('assets/images/01.png', 'HeadPhone', '\$99.99')
+                ],
               )
             ]),
           ))
@@ -148,4 +195,50 @@ class HomeScreen extends StatelessWidget {
       )),
     );
   }
+}
+
+Widget bottomShow(String image, String name, String price) {
+  return Expanded(
+    child: Container(
+      margin: EdgeInsets.symmetric(horizontal: 7.5),
+      height: 150,
+      child: Stack(children: [
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 100,
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(26, 28, 45, 1.0),
+                borderRadius: BorderRadius.circular(15)),
+          ),
+        ),
+        Positioned(
+            top: 100,
+            left: 10,
+            child: Text(
+              name,
+              style: TextStyle(color: Colors.white.withOpacity(0.5)),
+            )),
+        Positioned(
+            top: 125,
+            left: 10,
+            child: Text(
+              price,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            )),
+        Align(alignment: Alignment.topCenter, child: Image.asset(image)),
+        Align(
+            alignment: Alignment.bottomRight,
+            child: CircleAvatar(
+              radius: 25,
+              child: Icon(
+                Icons.add,
+                color: Colors.orange,
+                size: 30,
+              ),
+              backgroundColor: Colors.white,
+            ))
+      ]),
+    ),
+  );
 }
