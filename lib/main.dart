@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tests/bindings.dart';
-import 'package:tests/home_Screen.dart';
+import 'package:tests/clothingscreenHome.dart';
+
 import 'package:get/get.dart';
 
 void main() => runApp(MyApp());
@@ -12,6 +13,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         initialBinding: MyBindigs(),
         debugShowCheckedModeBanner: false,
-        home: HomeScreen());
+        home: HomeClothing());
   }
 }
