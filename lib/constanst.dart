@@ -17,3 +17,14 @@ List<ClothesModel> modelslist = <ClothesModel>[
   ClothesModel(
       imagePath: '$imagepath/06.jpg', title: 'Zarra Set', price: '\$ 199')
 ];
+
+List cats = [
+  'All',
+  'POPULAR',
+  'Summer',
+  'Winter',
+  'Fall',
+  'Spring',
+  "Gucci",
+  "Shannel"
+];
