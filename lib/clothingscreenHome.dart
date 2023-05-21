@@ -170,13 +170,11 @@ class HomeClothing extends StatelessWidget {
                 spacing: 5.0,
                 children: [
                   Container(
-                    height: 175,
-                    width: 175,
+                    height: 150,
                     color: Colors.amber,
                   ),
                   Container(
-                    height: 175,
-                    width: 175,
+                    height: 160,
                     color: Colors.red,
                   )
                 ],
